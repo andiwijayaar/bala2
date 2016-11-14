@@ -39,10 +39,10 @@
     [img setImage:[UIImage imageNamed:@"icon.png"]];
     [bgview addSubview:img];
     
-    UserID = [self CustomTextField:CGRectMake(40, img.frame.size.height + img.frame.origin.y + 60, self.view.frame.size.width - 80, 40) withStrPlcHolder:@"Email" withAttrColor:nil keyboardType:UIKeyboardTypeEmailAddress withTextColor:nil withFontSize:16 withTag:0 withDelegate:self];
+    UserID = [self CustomTextField:CGRectMake(40, img.frame.size.height + img.frame.origin.y + 60, self.view.frame.size.width - 80, 40) withStrPlcHolder:@"Email" withAttrColor:nil keyboardType:UIKeyboardTypeEmailAddress withTextColor:nil withFontSize:16 withTag:0 withDelegate:self withLabel:TRUE];
     [bgview addSubview:UserID];
     
-    Password = [self CustomTextField:CGRectMake(40, UserID.frame.size.height + UserID.frame.origin.y + 30, self.view.frame.size.width - 80, 40) withStrPlcHolder:@"Password" withAttrColor:nil keyboardType:UIKeyboardTypeDefault withTextColor:nil withFontSize:16 withTag:1 withDelegate:self];
+    Password = [self CustomTextField:CGRectMake(40, UserID.frame.size.height + UserID.frame.origin.y + 30, self.view.frame.size.width - 80, 40) withStrPlcHolder:@"Password" withAttrColor:nil keyboardType:UIKeyboardTypeDefault withTextColor:nil withFontSize:16 withTag:1 withDelegate:self withLabel:TRUE];
     [Password setSecureTextEntry:TRUE];
     [bgview addSubview:Password];
     

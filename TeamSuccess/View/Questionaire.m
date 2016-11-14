@@ -33,7 +33,7 @@
     }
     
     bgview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 70, self.view.frame.size.width, self.view.frame.size.height-70)];
-    [bgview setBackgroundColor:[UIColor clearColor]];
+    [bgview setBackgroundColor:[self colorFromHexString:@"#FAFAFA" withAlpha:1.0]];
     
     [bgview addSubview:[self UILabel:self withFrame:CGRectMake(20, 0, bgview.frame.size.width-40, 80) withText:@"Untuk memetakan orientrasi pemilih dalam PILKADA DKI 2017 PERHATIAN UNTUK RELAWAN : sosialisasi hanya bisa dilakukan terhadap tuan rumah yang sudah memiliki hak pilih." withTextSize:12 withAlignment:0 withLines:0]];
     

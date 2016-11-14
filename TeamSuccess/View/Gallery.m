@@ -31,7 +31,7 @@
     }
     
     bgview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 70, self.view.frame.size.width, self.view.frame.size.height-70)];
-    [bgview setBackgroundColor:[UIColor clearColor]];
+    [bgview setBackgroundColor:[self colorFromHexString:@"#FAFAFA" withAlpha:1.0]];
     
     x = 20;
     y = 0;

@@ -31,13 +31,13 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    UILabel *head = [self UILabel:self withFrame:CGRectMake(0, 70, [self view].frame.size.width, 50) withText:@"Forum Relawan Keluran Jati Rawa" withTextSize:16 withAlignment:0 withLines:0];
-    [head setBackgroundColor:[UIColor blueColor]];
+    UILabel *head = [self UILabel:self withFrame:CGRectMake(0, 70, [self view].frame.size.width, 50) withText:@"  Forum Relawan Keluran Jati Rawa" withTextSize:16 withAlignment:0 withLines:0];
+    [head setBackgroundColor:[self colorFromHexString:@"#E43F3F" withAlpha:1.0]];
     [head setTextColor:[UIColor whiteColor]];
     [[self view] addSubview:head];
     
     bgview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 120, self.view.frame.size.width, self.view.frame.size.height-120)];
-    [bgview setBackgroundColor:[UIColor clearColor]];
+    [bgview setBackgroundColor:[self colorFromHexString:@"#FAFAFA" withAlpha:1.0]];
     bgview.contentSize = CGSizeMake(self.view.frame.size.width, 450);
     
     UITextView *input = [[UITextView alloc] initWithFrame:CGRectMake(0, bgview.frame.size.height-80, bgview.frame.size.width-100, 80)];

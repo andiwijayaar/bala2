@@ -53,10 +53,12 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     
-//    [[[self navigationController] navigationBar] setBarTintColor:[self colorFromHexString:@"#00A4BB" withAlpha:1.0]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+//    [[[self navigationController] navigationBar] setBarTintColor:[self colorFromHexString:@"#FFFFFF" withAlpha:1.0]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     //Hilangkan Back string
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    [[[self navigationItem] backBarButtonItem] setTintColor:[UIColor blackColor]];
+    [[[self navigationController] navigationBar] setTintColor:[UIColor whiteColor]];
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     //disable back when swipe
@@ -470,7 +472,7 @@
 
 /*========================================================EDITING=====================================================*/
 
-- (UITextField *)CustomTextField:(CGRect)frame withStrPlcHolder:(NSString *)strPlcHolder withAttrColor:(NSString *)attrColor keyboardType:(UIKeyboardType)type withTextColor:(NSString *)textColor withFontSize:(CGFloat)fontSize withTag:(int)tag withDelegate:(id)sender{
+- (UITextField *)CustomTextField:(CGRect)frame withStrPlcHolder:(NSString *)strPlcHolder withAttrColor:(NSString *)attrColor keyboardType:(UIKeyboardType)type withTextColor:(NSString *)textColor withFontSize:(CGFloat)fontSize withTag:(int)tag withDelegate:(id)sender withLabel:(BOOL)label{
     UIColor *color = [self colorFromHexString:@"#CACACA" withAlpha:1.0];
     UIColor *txtColor = [self colorFromHexString:@"#6E6E6E" withAlpha:1.0];
     if(attrColor != nil){
@@ -502,12 +504,14 @@
     
     [[textField layer] addSublayer:newLayer];
     
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, -25, frame.size.width, 40)];
-    [lbl setText:strPlcHolder];
-    [lbl setTextColor:[self colorFromHexString:@"#999999" withAlpha:1.0]];
-    
-    [textField addSubview:lbl];
-    
+    if(label){
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, -20, frame.size.width, 40)];
+        [lbl setText:strPlcHolder];
+        [lbl setTextColor:[self colorFromHexString:@"#999999" withAlpha:1.0]];
+        [lbl setFont:[UIFont systemFontOfSize:12]];
+        
+        [textField addSubview:lbl];
+    }
     return textField;
 }
 

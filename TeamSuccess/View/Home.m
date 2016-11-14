@@ -33,8 +33,8 @@
     bgview = [self UIView:self withFrame:CGRectMake(0, 70, [self view].frame.size.width, [self view].frame.size.height-60)];
     [bgview setBackgroundColor:[UIColor clearColor]];
     
-    UILabel *head = [self UILabel:self withFrame:CGRectMake(0, 0, [self view].frame.size.width, 50) withText:@"Berita Utama / Pengumuman" withTextSize:16 withAlignment:0 withLines:0];
-    [head setBackgroundColor:[UIColor blueColor]];
+    UILabel *head = [self UILabel:self withFrame:CGRectMake(0, 0, [self view].frame.size.width, 50) withText:@"  Berita Utama / Pengumuman" withTextSize:16 withAlignment:0 withLines:0];
+    [head setBackgroundColor:[self colorFromHexString:@"#E43F3F" withAlpha:1.0]];
     [head setTextColor:[UIColor whiteColor]];
     [bgview addSubview:head];
     

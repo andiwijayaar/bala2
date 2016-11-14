@@ -26,7 +26,7 @@
 
 -(void)UI {
     bgview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 70, self.view.frame.size.width, self.view.frame.size.height-70)];
-    [bgview setBackgroundColor:[UIColor clearColor]];
+    [bgview setBackgroundColor:[self colorFromHexString:@"#FAFAFA" withAlpha:1.0]];
     
     UILabel *Section1 = [self UILabel:self withFrame:CGRectMake(20, 0, bgview.frame.size.width-40, 40) withText:@"DATA PENGGUNA" withTextSize:18 withAlignment:0 withLines:0];
     [Section1 setTextColor:[UIColor blueColor]];

@@ -32,7 +32,7 @@
     }
     
     bgview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 70, self.view.frame.size.width, self.view.frame.size.height-70)];
-    [bgview setBackgroundColor:[UIColor clearColor]];
+    [bgview setBackgroundColor:[self colorFromHexString:@"#FAFAFA" withAlpha:1.0]];
     bgview.contentSize = CGSizeMake(self.view.frame.size.width, 500);
     
     [bgview addSubview:[self UILabel:self withFrame:CGRectMake(20, 0, bgview.frame.size.width-40, 50) withText:@"Akun Saya" withTextSize:16 withAlignment:0 withLines:0]];
