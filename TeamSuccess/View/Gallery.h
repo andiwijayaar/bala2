@@ -1,5 +1,5 @@
 //
-//  Forum.h
+//  Galery.h
 //  TeamSuccess
 //
 //  Created by Mario Damianus on 11/11/16.
@@ -8,6 +8,6 @@
 
 #import "ParentViewController.h"
 
-@interface Forum : ParentViewController <UITextViewDelegate>
+@interface Gallery : ParentViewController
 
 @end

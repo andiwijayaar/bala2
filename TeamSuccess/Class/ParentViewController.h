@@ -5,6 +5,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWRevealViewController.h"
 
 #define DEVICEID [PCUtils getDeviceID]
 #define DEVICETOKEN [defaults objectForKey:@"ApnsDeviceToken"]
@@ -59,6 +60,7 @@
 - (void)showAlert2:(NSString*)alertMessage title:(NSString*)title btn1:(NSString*)btn1 btn2:(NSString*)btn2 tag:(int)tag delegate:(id)delegate;
 
 //Networking
+-(NSDictionary*)HttpRequest:(id)sender withAction:(NSString*)action withParams:(NSDictionary*)params;
 -(void)RequestData:(id)sender withAction:(NSString*)action withParams:(NSDictionary*)params;
 
 

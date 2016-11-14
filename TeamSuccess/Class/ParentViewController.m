@@ -25,9 +25,9 @@
     //background image
     bgimage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [self view].bounds.size.width, [self view].bounds.size.height)];
 //    [bgimage setImage:[UIImage imageNamed:@"Background"]];
-    [bgimage setBackgroundColor:[self colorFromHexString:@"#FAFAFA" withAlpha:1.0]];
+    [bgimage setBackgroundColor:[self colorFromHexString:@"#E12929" withAlpha:1.0]];
     [[self view] addSubview:bgimage];
-
+    
     //Gradient background
 //    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
 //    gradientLayer.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height-20);
@@ -127,6 +127,7 @@
 
 -(UITextField*)UITextField:(id)sender withFrame:(CGRect)frame withText:(NSString *)text withSize:(int)size withInputType:(UIKeyboardType)input withSecure:(int)sec {
     UITextField *txt = [[UITextField alloc] initWithFrame:frame];
+    txt.borderStyle = UITextBorderStyleRoundedRect;
     txt.attributedPlaceholder = [[NSAttributedString alloc]
                                  initWithString:text
                                  attributes:@{NSForegroundColorAttributeName:[self colorFromHexString:@"#CACACA" withAlpha:1.0]}];
@@ -142,10 +143,11 @@
 -(UIButton*)UIButton:(id)sender withFrame:(CGRect)frame withTitle:(NSString*)title withTag:(int)tag {
     UIButton *btn = [[UIButton alloc] initWithFrame:frame];
     //    [btn setImage:[UIImage imageNamed:@"Back-Button"] forState:UIControlStateNormal];
+    [[btn layer] setBorderWidth:1.0];
     [btn setTitle:title forState:UIControlStateNormal];
-    [btn setTitleColor:[self colorFromHexString:@"#FAFAFA" withAlpha:1.0] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(Act:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setBackgroundColor:[UIColor clearColor]];
+    [btn setBackgroundColor:[UIColor whiteColor]];
     [btn setTag:tag];
     return btn;
 }
@@ -263,7 +265,9 @@
 }
 
 - (void)Act:(id)sender {
-    
+}
+
+-(void)BackBtn {
 }
 
 - (UIColor *)transparentBlack {
@@ -393,6 +397,29 @@
 }
 
 #pragma mark - Networking
+-(NSDictionary*)HttpRequest:(id)sender withAction:(NSString*)action withParams:(NSDictionary*)params {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://rootapa.com/rjuang/%@.php", @"api_test"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLResponse *response;
+    NSError *error;
+    //send it synchronous
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSData *data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    // check for an error. If there is a network error, you should handle it here.
+    if(!error)
+    {
+        //log response
+        NSLog(@"Response from server = %@", responseString);
+    }
+    NSLog(@"%@", json);
+
+    
+    return json;
+}
+
 -(void)RequestData:(id)sender withAction:(NSString*)action withParams:(NSDictionary*)params {
     @try {
         if(params == nil) {
@@ -441,7 +468,7 @@
     }
 }
 
-/*========================================EDITING========================================*/
+/*========================================================EDITING=====================================================*/
 
 - (UITextField *)CustomTextField:(CGRect)frame withStrPlcHolder:(NSString *)strPlcHolder withAttrColor:(NSString *)attrColor keyboardType:(UIKeyboardType)type withTextColor:(NSString *)textColor withFontSize:(CGFloat)fontSize withTag:(int)tag withDelegate:(id)sender{
     UIColor *color = [self colorFromHexString:@"#CACACA" withAlpha:1.0];
@@ -469,11 +496,17 @@
     
     CGFloat flHeight = textField.frame.size.height;
     CGFloat flWidth = textField.frame.size.width;
-    newLayer.frame = CGRectMake(0, flHeight-10, flWidth, 1);
+    newLayer.frame = CGRectMake(0, flHeight-5, flWidth, 1);
     newLayer.backgroundColor = [txtColor CGColor];
     newLayer.name = @"bottomLayer";
     
     [[textField layer] addSublayer:newLayer];
+    
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, -25, frame.size.width, 40)];
+    [lbl setText:strPlcHolder];
+    [lbl setTextColor:[self colorFromHexString:@"#999999" withAlpha:1.0]];
+    
+    [textField addSubview:lbl];
     
     return textField;
 }
@@ -506,8 +539,8 @@
     CALayer *newLayer = [CALayer layer];
     
     CGFloat flHeight = textField.frame.size.height;
-    CGFloat flWidth = textField.frame.size.width + 30;
-    newLayer.frame = CGRectMake(0, flHeight - 10, flWidth, 1);
+    CGFloat flWidth = textField.frame.size.width;
+    newLayer.frame = CGRectMake(0, flHeight - 5, flWidth, 1.5);
     newLayer.backgroundColor = [txtColor CGColor];
     newLayer.name = @"bottomLayer";
     
@@ -530,7 +563,7 @@
         if(msg != nil){
             [self advValidation:sender withText:[NSString stringWithFormat:msg, [sender placeholder]]];
         }else{
-            [self advValidation:sender withText:[NSString stringWithFormat:@"%@ %@", [sender placeholder], @"isRequired"]];
+            [self advValidation:sender withText:[NSString stringWithFormat:@"%@ %@", [sender placeholder], @"wajib diisi!"]];
         }
     }
 }
@@ -609,7 +642,7 @@
 
 - (void)advValidation:(UITextField*)sender withText:(NSString*)text{
     if([[[[[sender layer] sublayers] objectAtIndex:0] name] isEqualToString:@"bottomLayer"]){
-        UILabel *adv = [[UILabel alloc] initWithFrame:CGRectMake(0, sender.frame.size.height - 10, sender.frame.size.width, 10)];
+        UILabel *adv = [[UILabel alloc] initWithFrame:CGRectMake(0, sender.frame.size.height - 5, sender.frame.size.width, 10)];
         [adv setText:text];
         [adv setTextColor:[UIColor redColor]];
         [adv setFont:[UIFont systemFontOfSize:9]];
@@ -722,5 +755,4 @@
         [[sender layer] replaceSublayer:[[[sender layer] sublayers] objectAtIndex:0] with:newLayer];
     }
 }
-
 @end

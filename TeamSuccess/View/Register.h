@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  Register.h
 //  TeamSuccess
 //
 //  Created by Mario Damianus on 11/11/16.
 //  Copyright © 2016 MC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ParentViewController.h"
 
-@interface ViewController : UIViewController
-
+@interface Register : ParentViewController
 
 @end
-
