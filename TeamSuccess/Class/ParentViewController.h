@@ -6,6 +6,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import "AFNetworking.h"
+#import "AFHTTPRequestOperationManager+Synchronous.h"
 
 #define DEVICEID [PCUtils getDeviceID]
 #define DEVICETOKEN [defaults objectForKey:@"ApnsDeviceToken"]
@@ -76,5 +78,7 @@
 - (UITextField *)TextFieldWithButton:(CGRect)frame withPaddingWidth:(CGFloat)flWidth withStrPlcHolder:(NSString *)strPlcHolder withAttrColor:(NSString *)attrColor keyboardType:(UIKeyboardType)type withTextColor:(NSString *)textColor withFontSize:(CGFloat)fontSize withTag:(int)tag withDelegate:(id)sender;
 - (void)requiredTextFieldWithButton:(id)sender withMsg:(NSString *)msg withPaddingWidth:(int)flWidth;
 - (void)removeValidationTextFieldWithButton:(id)sender withColor:(NSString *)color withPaddingWidth:(int)flWidth;
+-(NSDictionary*)PostJson:(NSDictionary *)dataDictionary withURL:(NSString *)url;
+-(NSDictionary*)GetJson:(NSDictionary *)dataDictionary withURL:(NSString *)url;
 @end
 

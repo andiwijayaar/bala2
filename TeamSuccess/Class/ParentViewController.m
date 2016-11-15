@@ -7,6 +7,7 @@
 #import "ParentViewController.h"
 #import "Login.h"
 
+
 @interface ParentViewController ()
 
 @end
@@ -759,4 +760,29 @@
         [[sender layer] replaceSublayer:[[[sender layer] sublayers] objectAtIndex:0] with:newLayer];
     }
 }
+
+-(NSDictionary*)PostJson:(NSDictionary *)dataDictionary withURL:(NSString *)url {
+//    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"first title", @"title",@"1",@"blog_id", nil];//if your json structure is something like {"title":"first title","blog_id":"1"}
+//
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSError *error = nil;
+    NSDictionary *result = [manager syncPOST:url
+                           parameters:dataDictionary != nil ? dataDictionary : nil
+                            operation:NULL
+                                error:&error];
+    return result;
+}
+
+-(NSDictionary*)GetJson:(NSDictionary *)dataDictionary withURL:(NSString *)url {
+    //    NSDictionary *userDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"first title", @"title",@"1",@"blog_id", nil];//if your json structure is something like {"title":"first title","blog_id":"1"}
+    //
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSError *error = nil;
+    NSDictionary *result = [manager syncGET:url
+                                  parameters:dataDictionary != nil ? dataDictionary : nil
+                                   operation:NULL
+                                       error:&error];
+    return result;
+}
+
 @end

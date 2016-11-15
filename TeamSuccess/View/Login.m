@@ -4,7 +4,7 @@
 //
 //  Created by Mario Damianus on 11/11/16.
 //  Copyright © 2016 MC. All rights reserved.
-//
+//  
 
 #import "Login.h"
 
@@ -14,9 +14,20 @@
     UILabel *UserIdLabel, *PasswordLabel, *versi, /* *UserIDwarning, */*Passwordwarning, *Or;
     UITextField *UserID,*Password, *CEmail, *ip;
     UIButton *toggle, *regis, *Lang;
+    NSMutableDictionary *res;
 }
 -(void)viewDidLoad {
     [super viewDidLoad];
+//    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:@"foo",@"title", @"bar",@"body", @"1",@"userId", nil];
+//    
+//    NSDictionary *res = [self PostJson:dict withURL:@"http://jsonplaceholder.typicode.com/posts"];
+//    NSLog(@"result %@", res);
+    
+//    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"postId", nil];
+//    
+//    NSDictionary *res = [self GetJson:dict withURL:@"https://jsonplaceholder.typicode.com/comments"];
+//    NSLog(@"result %@", res);
+    
     [[[self navigationController] navigationBar] setTintColor:[self colorFromHexString:@"#E43F3F" withAlpha:1.0]];
     UILabel* lbNavTitle = [[UILabel alloc] initWithFrame:CGRectMake(0,40,320,80)];
     lbNavTitle.textAlignment = UITextAlignmentLeft;
